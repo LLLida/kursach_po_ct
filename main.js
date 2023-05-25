@@ -203,13 +203,23 @@ var isValidChain = (blockchainToValidate) => {
     return true;
 };
 
+// проверяет что числа вида 69696969...
+var isNiceHash = (hash) => {
+    for (var i = 0; i < difficulty; i++) {
+        if (hash[i] != "69"[i%2]) {
+            return false;
+        }
+    }
+    return true;
+};
+
 var mineBlock = (blockData) => {
     var previousBlock = getLatestBlock();
     var nextIndex = previousBlock.index + 1;
     var nonce = 0;
     var nextTimestamp = new Date().getTime() / 1000;
     var nextHash = calculateHash(nextIndex, previousBlock.hash, nextTimestamp, blockData, nonce);
-    while (nextHash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
+    while (!isNiceHash(nextHash)){
         nonce++;
         nextTimestamp = new Date().getTime() / 1000;
         nextHash = calculateHash(nextIndex, previousBlock.hash, nextTimestamp, blockData, nonce);
