@@ -1,0 +1,28 @@
+{
+    "name": "blockhain",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node main.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "crypto-js": "^3.1.6",
+        "express": "~4.17.3",
+        "ws": "^1.1.0"
+    },
+    "engines": {
+        "node": ">=4.3.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LLLida/kursach_po_ct.git"
+    },
+    "author": "Adil Mokhammad",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LLLida/kursach_po_ct/issues"
+    },
+    "homepage": "https://github.com/LLLida/kursach_po_ct#readme"
+}
