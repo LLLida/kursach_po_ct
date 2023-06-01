@@ -152,7 +152,20 @@ var calculateHashForBlock = (block) => {
 };
 
 var calculateHash = (index, previousHash, timestamp, data, nonce) => {
-    return CryptoJS.SHA256(index + previousHash + timestamp + data + nonce).toString();
+    let hash = 0;
+    var str = index + previousHash + timestamp + data + nonce;
+    var len = str.length / 2;
+    for (let i = str.length; i >= len; i--) {
+        let chr = str.charCodeAt(i);
+        hash = (hash << 5) - hash + chr * 69;
+        hash |= 0;
+    }
+    for (let i = 0; i < len; i++) {
+        let chr = str.charCodeAt(i);
+        hash = (hash << 5) - hash + chr * i;
+        hash |= 0;
+    }
+    return '' + hash;
 };
 
 var addBlock = (newBlock) => {
